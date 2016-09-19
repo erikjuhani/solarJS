@@ -5,7 +5,7 @@ var InputController = InputController || {};
 InputController.keyboard = function()
 {
       // Keyboard fast constants
-      this.LEFT, this.RIGHT, this.UP, this.RIGHT;
+      this.LEFT, this.RIGHT, this.UP, this.DOWN;
 
       // Store the current keys in the state
       this.pressed    = {};
