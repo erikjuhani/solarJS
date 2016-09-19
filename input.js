@@ -5,7 +5,10 @@ var InputController = InputController || {};
 InputController.keyboard = function()
 {
       // Keyboard fast constants
-      this.LEFT, this.RIGHT, this.UP, this.DOWN;
+      this.LEFT, this.RIGHT, this.UP, this.DOWN,
+      this.ENTER, this.SHIFT, this.SPACE,
+      this.ALT, this.CTRL, this.META,
+      this.ESCAPE;
 
       // Store the current keys in the state
       this.pressed    = {};
@@ -74,6 +77,12 @@ InputController.keyboard.prototype.onKeyChange = function(event, pressed)
       this.RIGHT  = this.pressed[this.key.VK_D] || this.pressed[this.key.VK_RIGHT];
       this.UP     = this.pressed[this.key.VK_W] || this.pressed[this.key.VK_UP];
       this.DOWN   = this.pressed[this.key.VK_S] || this.pressed[this.key.VK_DOWH];
+      this.ENTER  = this.pressed[this.key.VK_ENTER];
+      this.SHIFT  = this.pressed[this.key.VK_SHIFT];
+      this.SPACE  = this.pressed[this.key.VK_SPACE];
+      this.ALT    = this.pressed[this.key.VK_ALT];
+      this.CTRL   = this.pressed[this.key.VK_CTRL];
+      this.ESCAPE = this.pressed[this.key.VK_ESCAPE];
 
 }
 
