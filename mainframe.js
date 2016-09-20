@@ -25,7 +25,7 @@ var main = function() {
   var dt = (now - then) / 1000;
 
   if(keyboard.LEFT) {
-    console.log('LEFT');
+    console.log(Math.HALF_PI);
   }
   if(keyboard.RIGHT) {
     console.log('RIGHT');
