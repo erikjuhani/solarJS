@@ -12,34 +12,34 @@ Vector.vector2.prototype.setPoint = function(x, y) {
   // Make a base vector with values (1, 1) if no units are given
   if ((x == 0 || x == null) && (y == 0 || y == null)) x = 1, y = 1;
   this.point = [x, y];
+  this.x = x;
+  this.y = y;
 }
 
 Vector.vector2.prototype.getLength = function() {
-  x = this.point[0];
-  y = this.point[1];
+  x = this.x;
+  y = this.y;
   return Math.sqrt(x*x + y*y);
 }
 
 Vector.vector2.prototype.setAngle = function(angle)
 {
   var length = this.getLength();
-  this.point[0] = Math.cos(angle) * length;
-  this.point[1] = Math.sin(angle) * length;
+  this.x = Math.cos(angle) * length;
+  this.y = Math.sin(angle) * length;
 }
 
 Vector.vector2.prototype.getAngle = function() {
-  x = this.point[0];
-  y = this.point[1];
-  return Math.atan2(x, y);
+  return Math.atan2(this.x, this.y);
 }
 
 Vector.vector2.prototype.getUnitVector = function() {
   var length = this.getLength();
-  return new Vector.vector2(this.point[0]/length, this.point[1]/length);
+  return new Vector.vector2(this.x/length, this.y/length);
 }
 
 Vector.vector2.prototype.add = function(v2) {
-  return new Vector.vector2(this.point[0] + v2.point[0], this.point[1] + v2.point[1])
+  return new Vector.vector2(this.x + v2.x, this.y + v2.y)
 }
 
 
