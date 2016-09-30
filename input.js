@@ -1,5 +1,4 @@
 /* Mouse and keyboard controllers */
-
 var InputController = InputController || {};
 
 InputController.keyboard = function()

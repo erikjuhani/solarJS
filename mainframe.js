@@ -25,7 +25,12 @@ var mouse    = new InputController.mouse();
 var vector   = new Vector.vector2(150, 150);
 var vec      = new Vector.vector2(250, 250);
 var vector2  = new Vector.vector2(25, 50);
+var counter  = new Counter();
 var square   = [new Vector.vector2(0, 0), new Vector.vector2(40,0), new Vector.vector2(0,40), new Vector.vector2(40,40)];
+
+var tmatrix = new Matrix().translate(-250, -250),
+    rmatrix = new Matrix().rotate(1),
+    imatrix = new Matrix().translate(250,250);
 
 console.log(texture);
 console.log(vector.getPoint());
@@ -33,13 +38,25 @@ console.log(Math.convertRadians(vector.getAngle()));
 for(var i = 0; i < square.length; i++) {
   square[i] = new Matrix().translate(230, 230).apply(square[i]);
 };
-var matrix = new Matrix().translate(-250,-250).combine(new Matrix().rotate(1)).combine(new Matrix().translate(250,250));
+console.log(tmatrix);
+console.log(rmatrix);
+console.log(imatrix);
+
+var matrix = tmatrix.combine(rmatrix).combine(imatrix);
+console.log(matrix);
+
+var testmatrix = new Matrix().translate(-250, -250).rotate(1).translate(250,250);
+console.log(testmatrix);
+
+
+
 
 var then   = Date.now();
 var main = function() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   var now = Date.now();
   var dt = (now - then) / 1000;
+  counter.tick(dt);
 
   if(keyboard.LEFT) {
     console.log(Math.HALF_PI);
@@ -50,10 +67,10 @@ var main = function() {
 
   if(mouse.LEFT || mouse.MIDDLE || mouse.RIGHT) {
 
-    vector = matrix.apply(vector);
+    vector = testmatrix.apply(vector);
 
     for(var i = 0; i < square.length; i++) {
-      square[i] = matrix.apply(square[i]);
+      square[i] = testmatrix.apply(square[i]);
     };
   }
   ctx.beginPath();
