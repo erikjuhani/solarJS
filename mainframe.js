@@ -26,32 +26,30 @@ var vector   = new Vector.vector2(150, 150);
 var vec      = new Vector.vector2(250, 250);
 var vector2  = new Vector.vector2(25, 50);
 var counter  = new Counter();
+var rect     = new Rect(vector, 40, 40);
+var vp       = new Viewport();
+var audio    = new SoundLib();
 var square   = [new Vector.vector2(0, 0), new Vector.vector2(40,0), new Vector.vector2(0,40), new Vector.vector2(40,40)];
 
-var tmatrix = new Matrix().translate(-250, -250),
-    rmatrix = new Matrix().rotate(1),
-    imatrix = new Matrix().translate(250,250);
+audio.loadSound('./sounds/pour.wav')
+console.log(audio);
+audio.playSound(audio.buffer);
 
+console.log(rect.top);
 console.log(texture);
-console.log(vector.getPoint());
-console.log(Math.convertRadians(vector.getAngle()));
+console.log(vector.get());
+console.log(Math.toRadians(vector.getAngle()));
 for(var i = 0; i < square.length; i++) {
   square[i] = new Matrix().translate(230, 230).apply(square[i]);
 };
-console.log(tmatrix);
-console.log(rmatrix);
-console.log(imatrix);
-
-var matrix = tmatrix.combine(rmatrix).combine(imatrix);
-console.log(matrix);
 
 var testmatrix = new Matrix().translate(-250, -250).rotate(1).translate(250,250);
 console.log(testmatrix);
 
+console.log(vp);
 
 
-
-var then   = Date.now();
+var then = Date.now();
 var main = function() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   var now = Date.now();
@@ -66,13 +64,17 @@ var main = function() {
   }
 
   if(mouse.LEFT || mouse.MIDDLE || mouse.RIGHT) {
-
-    vector = testmatrix.apply(vector);
-
+    rect.pos = new Matrix().rotate(1).apply(rect.pos);
     for(var i = 0; i < square.length; i++) {
       square[i] = testmatrix.apply(square[i]);
+      rect.points[i] = new Matrix().rotate(1).apply(rect.points[i]);
     };
   }
+  rect.pos = testmatrix.apply(rect.pos);
+  for(var i = 0; i < rect.points.length; i++) {
+    rect.points[i] = testmatrix.apply(rect.points[i]);
+  };
+
   ctx.beginPath();
   ctx.moveTo(square[0].x,square[0].y);
   ctx.lineTo(square[1].x,square[1].y);
@@ -82,12 +84,17 @@ var main = function() {
   ctx.stroke();
 
   ctx.beginPath();
-  ctx.moveTo(vector.x+15, vector.y+15);
-  ctx.lineTo(250, 250);
+  ctx.moveTo(rect.points[0].x,rect.points[0].y);
+  ctx.lineTo(rect.points[1].x,rect.points[1].y);
+  ctx.lineTo(rect.points[2].x,rect.points[2].y);
+  ctx.lineTo(rect.points[3].x,rect.points[3].y);
+  ctx.lineTo(rect.points[0].x,rect.points[0].y);
   ctx.stroke();
 
-
-  ctx.fillRect(vector.x, vector.y, 30, 30);
+  ctx.beginPath();
+  ctx.moveTo(rect.pos.x, rect.pos.y);
+  ctx.lineTo(250, 250);
+  ctx.stroke();
 
   then = now;
 

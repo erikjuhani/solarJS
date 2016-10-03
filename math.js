@@ -1,11 +1,6 @@
 // More math functions
-Math.convertDegrees = function(degrees) {
-  return degrees * Math.radPerDegree;
-}
-
-Math.convertRadians = function(radians) {
-  return radians * Math.degPerRadian;
-}
+Math.toRadians = function(d) { return d * Math.toR; }
+Math.toDegrees = function(r) { return r * Math.toD; }
 
 Math.euclidean = function(pos0,pos1) {
   d1 = pos0.x - pos1.x;
@@ -22,6 +17,6 @@ Math.manhattan = function(pos0,pos1) {
 // Math constants
 Math.HALF_PI      = Math.PI/2;
 Math.PI2          = Math.PI*2;
-Math.degPerRadian = 180 / Math.PI;
-Math.radPerDegree = Math.PI / 180;
 Math.PY_CONST     = Math.sqrt(2);
+Math.toD          = 180 / Math.PI;
+Math.toR          = Math.PI / 180;
