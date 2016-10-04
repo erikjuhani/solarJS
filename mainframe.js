@@ -28,12 +28,10 @@ var vector2  = new Vector.vector2(25, 50);
 var counter  = new Counter();
 var rect     = new Rect(vector, 40, 40);
 var vp       = new Viewport();
-var audio    = new SoundLib();
+var pour     = new Sound('./sounds/water.wav');
 var square   = [new Vector.vector2(0, 0), new Vector.vector2(40,0), new Vector.vector2(0,40), new Vector.vector2(40,40)];
 
-audio.loadSound('./sounds/pour.wav')
-console.log(audio);
-audio.playSound(audio.buffer);
+console.log(pour);
 
 console.log(rect.top);
 console.log(texture);
