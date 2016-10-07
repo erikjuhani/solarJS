@@ -18,6 +18,7 @@ var canvas = document.getElementById('gameWindow');
 canvas.width = 500;
 canvas.height = 500;
 ctx = canvas.getContext('2d');
+cData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
 var texture  = new Texture('https://mir-s3-cdn-cf.behance.net/project_modules/disp/0a7a9323462631.5632376426e94.jpg');
 var keyboard = new InputController.keyboard();
@@ -28,10 +29,21 @@ var vector2  = new Vector.vector2(25, 50);
 var counter  = new Counter();
 var rect     = new Rect(vector, 40, 40);
 var vp       = new Viewport();
-var pour     = new Sound('./sounds/water.wav');
+var sl       = new SoundLib();
+var pour     = new SoundLib.sound('pour', './sounds/pour.wav');
+var water    = new SoundLib.sound('water', './sounds/water.wav');
+var water2   = new SoundLib.sound('water2', './sounds/water.wav');
 var square   = [new Vector.vector2(0, 0), new Vector.vector2(40,0), new Vector.vector2(0,40), new Vector.vector2(40,40)];
 
+//sl.loadDir('./sounds/pour.wav');
+//water2.getBuffer();
+console.log(water2);
+sl.loadSound(water);
+sl.loadSound(pour);
+pour.play(0.1);
+water.play(0.2, 11.757369995117188);
 console.log(pour);
+console.log(sl.sounds);
 
 console.log(rect.top);
 console.log(texture);

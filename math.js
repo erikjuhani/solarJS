@@ -8,6 +8,11 @@ Math.euclidean = function(pos0,pos1) {
   return Math.sqrt(d1*d1 + d2*d2);
 }
 
+Number.prototype.clamp = function(min, max) {
+  return Math.max(Math.min(this, max), min);
+  /*return this > max ? max : this < min ? min : this;*/
+}
+
 Math.manhattan = function(pos0,pos1) {
   d1 = Math.abs(pos0.x - pos1.x);
   d2 = Math.abs(pos0.y - pos2.y);

@@ -39,5 +39,22 @@ Rect.prototype = {
         this.points[1].set(x + this.w, y);
         this.points[2].set(x + this.w, y + this.h);
         this.points[3].set(x, y + this.h);
+      },
+
+      // For any update functions
+      updatePoints: function() {
+        var x = this.pos.x,
+            y = this.pos.y;
+        this.points[0].set(x, y);
+        this.points[1].set(x + this.w, y);
+        this.points[2].set(x + this.w, y + this.h);
+        this.points[3].set(x, y + this.h);
+      },
+
+      draw: function(data) {
+        for(var i = 0; i < this.h; i++) {
+
+        }
       }
+
 }
