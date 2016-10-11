@@ -32,6 +32,10 @@ Rect = function(pos, width, height)
 
 Rect.prototype = {
 
+      set_size: function(width, height) {
+        this.w = width;
+        this.h = height;
+      },
       setPoints: function() {
         var x = this.pos.x,
             y = this.pos.y;
@@ -51,9 +55,11 @@ Rect.prototype = {
         this.points[3].set(x, y + this.h);
       },
 
-      draw: function(data) {
-        for(var i = 0; i < this.h; i++) {
-
+      draw: function(surface) {
+        for(var y=0; y < this.h; y++) {
+          for(var x=0; x < this.w; x++) {
+            return;
+          }
         }
       }
 

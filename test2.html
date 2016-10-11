@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Test 2</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var canvas = document.createElement('canvas');
+      canvas.id = 'displaySurface';
+      canvas.width = 800;
+      canvas.height = 600;
+      var id = canvas.id;
+      document.body.appendChild(canvas);
+
+      var ctx = canvas.getContext('2d');
+      var pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      var update = function() {
+        for(var y=0; y < pixels.height; y++) {
+          for(var x=0; x < pixels.width; x++) {
+            var i = (x + y * canvas.height) * 4,
+                r = pixels.data[i],
+                g = pixels.data[i+1],
+                b = pixels.data[i+2];
+
+            var grey = (r + g + b)/3;
+            pixels.data[i] = 200;
+            pixels.data[i+1] = 150;
+            pixels.data[i+2] = 100;
+            pixels.data[i+3] = 255;
+          }
+        }
+        console.log(ctx);
+        ctx.putImageData(pixels, 0, 0);
+        console.log(ctx);
+      }
+      update();
+    </script>
+  </body>
+</html>
