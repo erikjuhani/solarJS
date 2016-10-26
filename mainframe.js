@@ -50,7 +50,6 @@ background.set_ctx(screen.get_ctx());
 background.set_color([200, 150, 100, 255]);
 blackSquare.set_ctx(screen.get_ctx());
 blackSquare.set_color([0, 0, 0, 255]);
-background.blit(blackSquare);
 screen.blit(background);
 
 //sl.loadDir('./sounds/pour.wav');
@@ -69,7 +68,9 @@ console.log(vector.get());
 console.log(Math.toRadians(vector.getAngle()));
 for(var i = 0; i < square.length; i++) {
   square[i] = new Matrix().translate(230, 230).apply(square[i]);
+  blackSquare.rect.points[i] = new Matrix().translate(250, 250).apply(blackSquare.rect.points[i]);
 };
+blackSquare.rect.pos = new Matrix().translate(250, 250).apply(blackSquare.rect.pos);
 
 var testmatrix = new Matrix().translate(-250, -250).rotate(1).translate(250,250);
 console.log(testmatrix);
@@ -101,7 +102,9 @@ var main = function() {
   rect.pos = testmatrix.apply(rect.pos);
   for(var i = 0; i < rect.points.length; i++) {
     rect.points[i] = testmatrix.apply(rect.points[i]);
+    blackSquare.rect.points[i] = testmatrix.apply(blackSquare.rect.points[i]);
   };
+  blackSquare.rect.pos = testmatrix.apply(blackSquare.rect.pos);
 
   screen.ctx.beginPath();
   screen.ctx.moveTo(square[0].x,square[0].y);
@@ -133,4 +136,4 @@ var main = function() {
 var w = window;
 requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame || w.msRequestAnimationFrame || w.mozRequestAnimationFrame;
 
-main()
+main();

@@ -11,18 +11,15 @@ Surface.prototype = {
       blit: function(surface) {
         var yp = surface.rect.pos.y;
         var xp = surface.rect.pos.x;
-        console.log(yp);
 
-        for(var i=0; i < surface.pixels.length; i++) {
-          this.pixels.data[i * ] = surface.pixels[i];
-        }
         for(var y=0; y < surface.height; y++) {
           for(var x=0; x < surface.width; x++) {
             var i = (x + y * surface.width) * 4;
-            this.pixels.data[i] = surface.pixels.data[i];
-            this.pixels.data[i+1] = surface.pixels.data[i+1];
-            this.pixels.data[i+2] = surface.pixels.data[i+2];
-            this.pixels.data[i+3] = surface.pixels.data[i+3];
+            var ip = ((xp + x) + (yp + y) * this.width) * 4;
+            this.pixels.data[ip] = surface.pixels.data[i];
+            this.pixels.data[ip+1] = surface.pixels.data[i+1];
+            this.pixels.data[ip+2] = surface.pixels.data[i+2];
+            this.pixels.data[ip+3] = surface.pixels.data[i+3];
           }
         }
         this.ctx.putImageData(this.pixels, 0, 0);

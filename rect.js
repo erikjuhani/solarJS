@@ -20,8 +20,7 @@ Rect = function(pos, width, height)
       /**
       * @default 0, 0, 0, 0
       */
-      this.points = [new Vector.vector2(), new Vector.vector2(),
-                     new Vector.vector2(), new Vector.vector2()];
+      this.points = [this.pos, new Vector.vector2(), new Vector.vector2(), new Vector.vector2()];
       this.setPoints();
 
       this.left = this.pos.x;
@@ -31,6 +30,16 @@ Rect = function(pos, width, height)
 }
 
 Rect.prototype = {
+
+      left: function() {
+        return this.pos;
+      },
+      right: function() {
+        return this.pos;
+      },
+      bottom: function() {
+        return this.pos
+      },
 
       set_size: function(width, height) {
         this.w = width;

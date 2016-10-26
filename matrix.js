@@ -3,15 +3,17 @@ var Matrix = Matrix || {};
 /**
 *   @
 *   Example of use:
-*   As variable
-*   var matrix = new Matrix().translate(20, 0); --- Move 20 pixels in x-direction.
+*   As a variable
+*   var matrix = new Matrix().translate(20, 0); --- Move 20 pixels to right in horizontal-direction.
 *
-*   Chaining matrices
+*   Matrix chaining
 *   matrix.translate(20, 0).rotate(5).translate(-20, 0);
+*   First translates, then rotates and then translates again.
 *
 *   Setting up a matrix (a, b, c, d, tx, ty)
 *   var matrix = new Matrix().set(1, 0, 0, 1, 20, 0);
-*   It's same as matrix.translate(20, 0);
+*   is same as
+*   var matrix = new Matrix().translate(20, 0);
 *
 */
 
