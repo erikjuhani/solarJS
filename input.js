@@ -21,6 +21,7 @@ InputController.keyboard = function()
 
       // Store the current keys in the state
       this.pressed    = {};
+      this.isPressed  = false;
 
       this.key        = this.keys;
 
@@ -38,11 +39,12 @@ InputController.keyboard.prototype = {
             // Update the corresponding key by keycode
             var keyCode             = event.keyCode;
             this.pressed[keyCode]   = pressed;
+            this.isPressed          = pressed;
 
             this.LEFT   = this.pressed[this.key.VK_A] || this.pressed[this.key.VK_LEFT];
             this.RIGHT  = this.pressed[this.key.VK_D] || this.pressed[this.key.VK_RIGHT];
             this.UP     = this.pressed[this.key.VK_W] || this.pressed[this.key.VK_UP];
-            this.DOWN   = this.pressed[this.key.VK_S] || this.pressed[this.key.VK_DOWH];
+            this.DOWN   = this.pressed[this.key.VK_S] || this.pressed[this.key.VK_DOWN];
             this.ENTER  = this.pressed[this.key.VK_ENTER];
             this.SHIFT  = this.pressed[this.key.VK_SHIFT];
             this.SPACE  = this.pressed[this.key.VK_SPACE];
