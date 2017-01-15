@@ -10,17 +10,20 @@ Display = function() {
 Display.prototype = {
       init: function() {
         var canvas = document.createElement('canvas');
-        canvas.id = 'displaySurface';
+        canvas.id = 'solarDisplay';
         this.id = canvas.id;
         this.ctx = canvas.getContext('2d');
         this.surface = new Surface();
         document.body.appendChild(canvas);
+
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+        }, false);
       },
       set_size: function(width, height) {
         if (this.get_init()) {
           var canvas = document.getElementById(this.id);
           this.surface.set_size(width, height);
-          this.ctx = canvas.getContext('2d');
           this.surface.set_ctx(this.ctx);
           this.width = width;
           this.height = height;
@@ -29,6 +32,9 @@ Display.prototype = {
         } else {
           console.error('DisplayError: cannot set size in set_size: function()');
         }
+      },
+      setColor: function(color) {
+        this.surface.setColor(color);
       },
       get_ctx: function() {
         return this.ctx;

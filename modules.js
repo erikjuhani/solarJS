@@ -1,13 +1,8 @@
 // Predefined module packages
-var core = core || ['display', 'input', 'rect', 'vector'];
+var core = core || ['display', 'input', 'rect', 'vector', 'surface'];
 
 var modules = modules || {};
-modules = {
-    display : 'display.js',
-    input   : 'input.js',
-    rect    : 'rect.js',
-    vector  : 'vector.js',
-}
+
 /*
 new Import('input.js');
 new Import('math.js');

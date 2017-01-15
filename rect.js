@@ -8,37 +8,33 @@ Rect = function(pos, width, height)
       this.pos = pos || new Vector.vector2();
 
       /**
-      * @default 0
+      * @default 1
       */
-      this.w = width || 0;
+      this.w = width || 1;
 
       /**
-      * @default 0
+      * @default 1
       */
-      this.h = height || 0;
+      this.h = height || 1;
 
       /**
       * @default 0, 0, 0, 0
       */
-      this.points = [this.pos, new Vector.vector2(), new Vector.vector2(), new Vector.vector2()];
-      this.setPoints();
-
-      this.left = this.pos.x;
-      this.top  = this.pos.y;
-      this.right = this.pos.x + this.w;
-      this.bottom = this.pos.y + this.h;
+      this.points = [this.pos.clone(), new Vector.vector2(), new Vector.vector2(), new Vector.vector2()];
 }
 
 Rect.prototype = {
-
+      top: function() {
+        return this.pos.y
+      },
       left: function() {
-        return this.pos;
+        return this.pos.x;
       },
       right: function() {
-        return this.pos;
+        return this.pos.x + this.w;
       },
       bottom: function() {
-        return this.pos
+        return this.pos.y + this.h;
       },
 
       set_size: function(width, height) {
@@ -48,7 +44,7 @@ Rect.prototype = {
       setPoints: function() {
         var x = this.pos.x,
             y = this.pos.y;
-        this.points[0].set(x, y);
+        this.points[0].set(this.top(), this.left());
         this.points[1].set(x + this.w, y);
         this.points[2].set(x + this.w, y + this.h);
         this.points[3].set(x, y + this.h);

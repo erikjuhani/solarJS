@@ -9,10 +9,10 @@ Vector.vector2.prototype = {
 
       set: function(x, y) {
         /**
-        *  Make a template vector with values (0, 0) if no params are given
+        *  Make a template vector with values (0, 1) if no params are given
         */
         this.x = x || 0;
-        this.y = y || 0;
+        this.y = y || 1;
       },
       get: function() {
         return { x: this.x, y: this.y };
@@ -53,6 +53,9 @@ Vector.vector2.prototype = {
       },
       dot: function(v) {
         return new Vector.vector2(this.x*v.x, this.y*v.y);
+      },
+      clone: function() {
+        return new Vector.vector2(this.x, this.y);
       }
 
 }

@@ -24,7 +24,7 @@ Surface.prototype = {
         }
         this.ctx.putImageData(this.pixels, 0, 0);
       },
-      set_color: function(rgba) { // rgba = {r: 0, g: 0, b: 0, a: 255}
+      setColor: function(rgba) { // rgba = {r: 0, g: 0, b: 0, a: 255}
         var rgba = rgba || [0, 0, 0, 255];
         for(var y=0; y < this.height; y++) {
           for(var x=0; x < this.width; x++) {

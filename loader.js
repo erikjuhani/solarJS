@@ -9,13 +9,18 @@ Import = function(src) {
 }
 
 /**
-*     arguments ['core', 'custom']
+*     arguments
 */
-Load = function(args) {
-  console.log(modules.display);
-  console.log(args);
-      for(var i=0; i<args.length;++i) {
-        console.log(args[i]);
-        modules.core[args[i]]   ? new Import(args[i]) : '';
+Load = function() {
+  var keys      = Object.keys(modules),
+      values    = [];
+
+      for(var i=0, len = keys.length; i < len; ++i) {
+        var val = Object.keys(modules[keys[i]]).map(key => modules[keys[i]][key]);
+        Array.prototype.push.apply(values, val);
+      }
+
+      for(var i=0, len = values.length; i < len; ++i) {
+         new Import(values[i]);
       }
 }
